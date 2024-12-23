@@ -1,0 +1,27 @@
+server:
+  port: ${SERVER_PORT:8081}
+  shutdown: graceful
+spring:
+  application:
+    name: ${APP_NAME:cinema-service}
+  profiles:
+    active: ${ENV:dev}
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/cinema
+    username: root
+    password: nmtkma0550
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    properties:
+      format_sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
