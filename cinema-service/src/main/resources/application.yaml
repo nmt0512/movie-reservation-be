@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${SERVER_PORT:9081}
   shutdown: graceful
 spring:
   application:
@@ -11,12 +11,15 @@ spring:
     username: root
     password: nmtkma0550
     driverClassName: com.mysql.cj.jdbc.Driver
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
   jpa:
     show-sql: true
     properties:
       format_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
